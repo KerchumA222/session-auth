@@ -1,4 +1,4 @@
-Active Directory LDAP Authentication
+Session Based Authentication
 ====================================
 
 Laravel 5 Session Authentication driver.
