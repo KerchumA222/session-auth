@@ -1,5 +1,5 @@
 <?php
-namespace KerchumA222\LdapAuth;
+namespace KerchumA222\SessionAuth;
 
 use Illuminate\Auth\Guard;
 use Illuminate\Auth\AuthManager;

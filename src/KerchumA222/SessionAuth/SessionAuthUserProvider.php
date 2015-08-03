@@ -1,5 +1,5 @@
 <?php
-namespace KerchumA222\LdapAuth;
+namespace KerchumA222\SessionAuth;
 
 use Illuminate\Auth\GenericUser;
 use Illuminate\Contracts\Auth\UserProvider;
@@ -33,8 +33,8 @@ class SessionAuthUserProvider implements UserProvider
 	public function retrieveByID($identifier)
 	{
 		//laravel calls this on every request as it stores userid in session on its own
-		if(Session::get('currrentUser.id') == $identifier){
-			return new GenericUser(Session::get('currrentUser'));
+		if(Session::get('currentUser.id') == $identifier){
+			return new GenericUser(Session::get('currentUser'));
 		}
 
 	}
@@ -48,7 +48,7 @@ class SessionAuthUserProvider implements UserProvider
 	 */
 	public function retrieveByToken($identifier, $token)
 	{
-		$user = new GenericUser(Session::get('currrentUser'));
+		$user = new GenericUser(Session::get('currentUser'));
 		if($user->id == $identifier && $user->getRememberToken()){
 			return $user;
 		}
@@ -71,7 +71,7 @@ class SessionAuthUserProvider implements UserProvider
 	 * Retrieve a user by the given credentials.
 	 *
 	 * @param  array  $credentials
-	 * @return Model|null
+	 * @return null
 	 */
 	public function retrieveByCredentials(array $credentials)
 	{

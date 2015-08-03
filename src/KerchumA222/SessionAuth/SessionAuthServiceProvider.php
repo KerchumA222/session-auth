@@ -1,5 +1,5 @@
 <?php
-namespace KerchumA222\LdapAuth;
+namespace KerchumA222\SessionAuth;
 
 use Illuminate\Support\ServiceProvider;
 
