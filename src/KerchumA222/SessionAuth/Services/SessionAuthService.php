@@ -29,7 +29,7 @@ class SessionAuthService implements SessionAuthServiceContract {
 	 * @return bool
 	 */
 	public function userHasModuleSubscription($moduleName){
-		return array_has($this->auth->user()->moduleSubscriptions, $moduleName);
+		return array_key_exists($moduleName, $this->auth->user()->moduleSubscriptions);
 	}
 
 	/**
@@ -40,7 +40,12 @@ class SessionAuthService implements SessionAuthServiceContract {
 	 * @return bool
 	 */
 	public function userHasRoleForModule($moduleName, $roleName){
-		return array_has($this->auth->user()->moduleSubscriptions[$moduleName], $roleName);
+		if($this->userHasModuleSubscription($moduleName)){
+			return array_key_exists($roleName, $this->auth->user()->moduleSubscriptions[$moduleName]);
+		}
+		else {
+			return false;
+		}
 	}
 
 }
