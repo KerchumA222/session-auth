@@ -1,6 +1,7 @@
 <?php
 namespace KerchumA222\SessionAuth;
 
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Support\ServiceProvider;
 use KerchumA222\SessionAuth\Services\SessionAuthService;
 use KerchumA222\SessionAuth\Services\SessionAuthServiceContract;
@@ -51,7 +52,7 @@ class SessionAuthServiceProvider extends ServiceProvider {
 		});
 
 		$this->app->singleton(SessionAuthServiceContract::class, function ($app) {
-			return new SessionAuthService($this->app['auth']);
+			return new SessionAuthService($this->app[Guard::class]);
 		});
 	}
 

@@ -3,7 +3,7 @@ namespace KerchumA222\SessionAuth\Services;
 
 use Illuminate\Contracts\Auth\Guard;
 
-class SessionAuthService {
+class SessionAuthService implements SessionAuthServiceContract {
 
 	/**
 	 * The Guard implementation.
